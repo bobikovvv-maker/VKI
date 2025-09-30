@@ -5,11 +5,11 @@ import studentInterface from '@/types/studentInterface';
 
 sqlite3.verbose();
 
-export const getstudentsDb = async (): Promise<studentInterface[]> => {
+export const getStudentsDb = async (): Promise<studentInterface[]> => {
   const db = new sqlite3.Database(process.env.DB ?? './db/vki-web.db');
 
   const students = await new Promise((resolve, reject) => {
-    const sql = 'SELECT * FROM class';
+    const sql = 'SELECT * FROM student';
     db.all(sql, [], (err, rows) => {
       if (err) {
         reject(err);
@@ -21,15 +21,7 @@ export const getstudentsDb = async (): Promise<studentInterface[]> => {
     });
   });
 
-  // test data
-  // const groups: GroupInterface[] = [
-  //   {
-  //     name: '2207 д2',
-  //   },
-  //   {
-  //     name: '2207 д2',
-  //   },
-  // ];
+
 
   return students as studentInterface[];
 };
