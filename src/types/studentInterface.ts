@@ -3,7 +3,7 @@ interface studentInterface {
   first_name: string;
   last_name:  string;
   middle_name: string;
-  groupId: BigInteger;
+  isDeleted?: boolean;
 };
 
 export default studentInterface;
